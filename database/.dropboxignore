@@ -1,0 +1,5 @@
+# ----
+# Automatically Generated .dropboxignore file at Wed Dec  6 16:00:58 CST 2023
+# ----
+*.sqlite*
+# ----
