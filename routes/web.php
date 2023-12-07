@@ -4,6 +4,7 @@ use App\Livewire\Home;
 use App\Livewire\Watch;
 use App\Livewire\Manage;
 use App\Livewire\Index;
+use App\Livewire\Searches;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,5 @@ Route::group(['middleware' => ['auth']], function () {
 // Admin routes
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/videos', Manage::class)->name('manage');
+    Route::get('/busquedas', Searches::class)->name('searches');
 });

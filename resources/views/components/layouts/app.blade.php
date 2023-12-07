@@ -19,6 +19,7 @@
                     @endauth
                     @role('admin')
                         <li><a class="hover:text-red-900" href="{{ route('manage') }}">Videos</a></li>
+                        <li><a class="hover:text-red-900" href="{{ route('searches') }}">Busquedas</a></li>
                     @endrole
                     </ul>
                 </div>
