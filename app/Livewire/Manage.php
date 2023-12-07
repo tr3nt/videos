@@ -13,8 +13,8 @@ class Manage extends Component
 
     public function mount()
     {
-        // Get all videos
-        $this->videos = Video::all()->toArray();
+        // Get all videos with play stats
+        $this->videos = Video::with('stats')->get()->toArray();
     }
 
     public function addVideo() : void

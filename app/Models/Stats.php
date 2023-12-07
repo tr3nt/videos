@@ -18,6 +18,6 @@ class Stats extends Model
     // Relations
     public function video() : BelongsTo
     {
-        return $this->belongsTo('videos');
+        return $this->belongsTo(Video::class, 'videos_id');
     }
 }

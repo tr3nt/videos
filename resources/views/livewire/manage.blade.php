@@ -7,6 +7,7 @@
                     <img class="w-14 h-10" src="https://img.youtube.com/vi/{{ $video['key'] }}/0.jpg" alt="">
                     <div class="ml-4 pr-2">
                         <h3 class="text-sm font-medium text-gray-700">{{ $video['title'] }}</h3>
+                        <p class="text-xs"><strong>{{ $video['stats']['hits'] }}</strong> Vistas</p>
                     </div>
                     <button wire:click="deleteVideo({{ $video['id'] }})" wire:confirm="Eliminar Video?" 
                         class="text-red-500 hover:text-red-700" type="button">

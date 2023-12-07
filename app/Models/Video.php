@@ -19,6 +19,6 @@ class Video extends Model
     // Relations
     public function stats() : HasOne
     {
-        return $this->hasOne('stats');
+        return $this->hasOne(Stats::class, 'videos_id');
     }
 }
