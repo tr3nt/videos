@@ -2,12 +2,18 @@
 
 namespace App\Livewire;
 
+use App\Models\Video;
 use Livewire\Component;
 
 class Home extends Component
 {
-    public function render()
+    public string $searchTxt = '';
+    public array $videos = [];
+
+    public function search()
     {
-        return view('livewire.home');
+        // Search by Title
+        $v = Video::where('title', 'like', '%'.$this->searchTxt.'%')->get();
+        $this->videos = $v->toArray();
     }
 }

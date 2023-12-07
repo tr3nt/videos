@@ -35,7 +35,7 @@
         </header>
 
         <main>
-            <div class="@if (Request::is('videos')) flex h-screen @endif bg-gray-200 w-full justify-center items-center">
+            <div class="flex h-screen bg-gray-200 w-full justify-center items-center">
                 {{ $slot }}
             </div>
         </main>
