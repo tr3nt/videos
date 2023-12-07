@@ -10,7 +10,7 @@
         <header>
             <nav class="flex justify-between items-center mx-auto w-[90%]">
                 <div class="text-2xl leading-[4rem]">
-                    Videos
+                    <a href="{{ route('index') }}">Videos</a>
                 </div>
                 <div class="leading-[4rem]">
                     <ul class="flex items-center gap-[4vw]">

@@ -22,7 +22,7 @@ class Login extends Component
             return redirect(route('home'));
         }
 
-        // Return login error
+        // Set login error
         session()->flash('message', 'Bad Credentials');
     }
 

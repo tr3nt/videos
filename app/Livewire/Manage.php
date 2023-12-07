@@ -17,7 +17,7 @@ class Manage extends Component
         $this->videos = Video::all()->toArray();
     }
 
-    public function addVideo()
+    public function addVideo() : void
     {
         // Validate with Helper rules
         $this->validate(vRules(Manage::class));
@@ -33,6 +33,14 @@ class Manage extends Component
 
         // Set flash message
         session()->flash('message', 'Video insertado correctamente');
+    }
+
+    public function deleteVideo(int $id) : void
+    {
+        // Delete by Model id and reload $videos
+        $video = Video::find($id);
+        $video->delete();
+        $this->videos = Video::all()->toArray();
     }
 
     // Helper Validator messages in spanish
