@@ -15,7 +15,7 @@ function vRules(string $class) : array
         ],
         'App\Livewire\Auth\Register' => [
             'form.name' => 'required|string|max:255',
-            'form.email' => 'required|string|email|max:255',
+            'form.email' => 'required|string|email|max:255|unique:users,email',
             'form.password' => 'required|string|min:8'
         ],
         'App\Livewire\Manage' => [
@@ -45,6 +45,7 @@ function vMessages(string $class) : array
             'form.name.max' => __('El nombre no debe ser de mas de 255 caracteres.'),
             'form.email.required' => __('El email es obligatorio.'),
             'form.email.email' => __('El email no es correcto.'),
+            'form.email.unique' => __('El email ya fue registrado.'),
             'form.password.required' => __('La contraseña es obligatoria.'),
             'form.password.min' => __('Na contraseña no debe tener menos de 8 caracteres.')
         ],

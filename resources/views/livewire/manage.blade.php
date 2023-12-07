@@ -32,7 +32,8 @@
                     <label for="key" class="block text-sm font-medium text-gray-700">URL</label>
                     <input class="bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4
                         text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-900"
-                        id="key" type="text" placeholder="https://www.youtube.com/watch?v=Kp4Mvapo5kc" wire:model="url">
+                        id="key" type="text" placeholder="https://www.youtube.com/watch?v=Kp4Mvapo5kc"
+                        wire:model="url" autocomplete="off">
                     @error('url') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                 </div>
                 <button class="shadow bg-gray-500 hover:bg-red-900 focus:shadow-outline focus:outline-none

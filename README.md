@@ -1,5 +1,7 @@
-## Videos 0.1
-Desarrollado por Esaim Nájera Mondragón
+## Videos 1.0
+Esaim Nájera Mondragón
+
+**Roles:** Admin y Visitante
 
 ### Instalacion
 1. Clonar repositorio
@@ -10,19 +12,34 @@ git clone https://github.com/tr3nt/videos.git
 ```bash
 composer install
 ```
-3. Agregar los params de Base de Datos al archivo **.env** (ej. Linux)
+3. Copiar el archivo **.env.example** a **.env** (ej. Linux)
 ```bash
 cp .env.example .env
 ```
-4. Ejecutar migraciones
+4. Definir los parametros de base de datos en **.env**
+```bash
+DB_DATABASE=videos
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
+5. Crear la APP_KEY de Laravel
+```bash
+php artisan key:generate
+```
+6. Ejecutar migraciones
 ```bash
 php artisan migrate
 ```
-5. Instalar js scripts y ejecutar NPM
+7. Instalar Tailwind
 ```bash
 npm install
 ```
+8. Generar archivos para producción
 ```bash
-npm run dev
+npm run build
 ```
-- Laravel, Livewire and Tailwind implemented.
+9. Ejecutar los Tests
+```bash
+php artisan test
+```
+### Desarrolllado con Laravel 10, Livewire 3 y Tailwind 3.

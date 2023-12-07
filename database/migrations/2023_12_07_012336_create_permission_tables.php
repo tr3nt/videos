@@ -114,6 +114,7 @@ return new class extends Migration
             $table->primary([$pivotPermission, $pivotRole], 'role_has_permissions_permission_id_role_id_primary');
         });
 
+        // Crear rol Admin
         DB::table('roles')->insert(['name' => 'admin', 'guard_name' => 'web']);
 
         app('cache')

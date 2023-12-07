@@ -2,7 +2,7 @@
     <form wire:submit.prevent="search">
         <input class="bg-gray-100 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 
             leading-tight focus:outline-none focus:bg-white focus:border-red-900"
-            type="text" placeholder="Todos" wire:model="searchTxt"
+            type="text" placeholder="Todos" wire:model="searchTxt" autocomplete="off"
         />
         <button class="shadow bg-gray-500 hover:bg-red-900 focus:shadow-outline focus:outline-none text-white 
             font-bold py-2 px-4 rounded" type="submit">Buscar

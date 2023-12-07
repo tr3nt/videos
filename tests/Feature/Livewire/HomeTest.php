@@ -4,17 +4,15 @@ namespace Tests\Feature\Livewire;
 
 use App\Livewire\Home;
 use App\Models\Search;
+use App\Models\Stats;
 use App\Models\Video;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
 
 class HomeTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
-    public function search_function_sets_hit_and_returns_matching_videos()
+    public function busqueda_registra_stats_y_devuelve_resultados()
     {
         $this->withoutExceptionHandling();
 
@@ -31,10 +29,22 @@ class HomeTest extends TestCase
 
         // Verificar que se haya registrado el hit en stats
         $this->assertDatabaseHas('searches', ['search_txt' => 'Video']);
+
+        // Eliminar datos de prueba
+        Search::whereSearchTxt('Video')->delete();
+        $v = Video::whereTitle('Video 1')->first();
+        Stats::whereVideosId($v->id)->delete();
+        $v->forceDelete();
+        $v = Video::whereTitle('Video 2')->first();
+        Stats::whereVideosId($v->id)->delete();
+        $v->forceDelete();
+        $v = Video::whereTitle('Video 3')->first();
+        Stats::whereVideosId($v->id)->delete();
+        $v->forceDelete();
     }
 
     /** @test */
-    public function search_function_displays_no_results_message_if_no_videos_found()
+    public function busqueda_muestra_mensaje_si_no_hay_resultados()
     {
         $this->withoutExceptionHandling();
         
@@ -46,10 +56,13 @@ class HomeTest extends TestCase
 
         // Verificar que se haya registrado el hit en stats
         $this->assertDatabaseHas('searches', ['search_txt' => 'Non-existent Video']);
+
+        // Eliminar datos de prueba
+        Search::whereSearchTxt('Non-existent Video')->delete();
     }
 
     /** @test */
-    public function set_hit_increments_existing_search_hit_count()
+    public function busqueda_incrementa_stats_existentes()
     {
         // Crear una búsqueda existente
         $search = Search::factory()->create(['search_txt' => 'Existing Search']);
@@ -61,10 +74,13 @@ class HomeTest extends TestCase
 
         // Verificar que el contador de hits se haya incrementado
         $this->assertEquals(2, $search->fresh()->hits);
+
+        // Eliminar datos de prueba
+        Search::whereSearchTxt('Existing Search')->delete();
     }
-    
+
     /** @test */
-    public function set_hit_creates_new_search_if_search_not_found()
+    public function busqueda_nueva_crea_stats()
     {
         // Crear una instancia de Home
         Livewire::test(Home::class)
@@ -73,5 +89,8 @@ class HomeTest extends TestCase
         
         // Verificar que se haya creado una nueva búsqueda
         $this->assertDatabaseHas('searches', ['search_txt' => 'New Search', 'hits' => 1]);
+
+        // Eliminar datos de prueba
+        Search::whereSearchTxt('New Search')->delete();
     }
 }
