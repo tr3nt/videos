@@ -15,9 +15,9 @@
                 <div class="leading-[4rem]">
                     <ul class="flex items-center gap-[4vw]">
                         <li><a class="hover:text-red-900" href="{{ route('home') }}">Inicio</a></li>
-                    @auth
-                        <li><a class="hover:text-red-900" href="{{ route('home') }}">New Project</a></li>
-                    @endauth
+                    @role('admin')
+                        <li><a class="hover:text-red-900" href="{{ route('manage') }}">Videos</a></li>
+                    @endrole
                     </ul>
                 </div>
                 <div>
@@ -35,7 +35,7 @@
         </header>
 
         <main>
-            <div class="@if (request()->url() !== 'http://proyectos.test/projects') flex h-screen @endif bg-gray-200 w-full justify-center items-center">
+            <div class="@if (Request::is('videos')) flex h-screen @endif bg-gray-200 w-full justify-center items-center">
                 {{ $slot }}
             </div>
         </main>
