@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('stats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('videos_id');
-            $table->integer('hits')->default(1);
+            $table->integer('hits')->default(0);
             $table->timestamps();
 
             // Foreign key from 'videos' table

@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\Stats;
 use App\Models\Video;
 
 class VideoObserver
@@ -11,7 +12,8 @@ class VideoObserver
      */
     public function created(Video $video): void
     {
-        //
+        // Create video hit stats
+        Stats::create(['videos_id' => $video->id]);
     }
 
     /**
