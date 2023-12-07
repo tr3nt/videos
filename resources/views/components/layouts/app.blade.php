@@ -14,7 +14,9 @@
                 </div>
                 <div class="leading-[4rem]">
                     <ul class="flex items-center gap-[4vw]">
+                    @auth
                         <li><a class="hover:text-red-900" href="{{ route('home') }}">Inicio</a></li>
+                    @endauth
                     @role('admin')
                         <li><a class="hover:text-red-900" href="{{ route('manage') }}">Videos</a></li>
                     @endrole

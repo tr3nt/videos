@@ -1,9 +1,10 @@
 <div>
     <div class="text-2xl leading-[4rem]">
-        Registro
+        {{ $title }}
     </div>
-    <form class="w-full max-w-sm" wire:submit.prevent="register">
+    <form class="w-full max-w-sm" wire:submit.prevent="execute">
     
+        @if($title === 'Registro')
         <!-- Role field -->
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">
@@ -13,11 +14,11 @@
             </div>
             <div class="md:w-2/3">
                 <select class="bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-900"
-                    id="inline-role" type="text" placeholder="John Doe" wire:model="form.role">
+                    id="inline-role" type="text" placeholder="John Doe" wire:model="role">
                     <option value="visitor">Visitante</option>
                     <option value="admin">Admin</option>
                 </select>
-                @error('form.role') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                @error('role') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
             </div>
         </div>
 
@@ -34,7 +35,8 @@
                 @error('form.name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
             </div>
         </div>
-    
+        @endif
+
         <!-- Email field -->
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">
@@ -48,7 +50,7 @@
                 @error('form.email') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
             </div>
         </div>
-        
+
         <!-- Password field -->
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">
@@ -62,14 +64,14 @@
                 @error('form.password') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
             </div>
         </div>
-        
+
         <!-- Button field -->
         <div class="md:flex md:items-center">
             <div class="md:w-1/3"></div>
             <div class="md:w-2/3 lg:text-left">
                 <button class="shadow bg-gray-500 hover:bg-red-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                     type="submit">
-                    Crear Cuenta
+                    {{ $btnTitle }}
                 </button>
             </div>
         </div>

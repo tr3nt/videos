@@ -31,7 +31,7 @@ class Manage extends Component
         $this->form['title'] = '';
         $this->url = '';
 
-        // Return login error
+        // Set flash message
         session()->flash('message', 'Video insertado correctamente');
     }
 
